@@ -1,8 +1,7 @@
 package com.java_microserver.productservice.controller;
 
-import com.java_microserver.productservice.dto.ProductRequest;
 import com.java_microserver.productservice.dto.ProductRequestDTO;
-import com.java_microserver.productservice.dto.ProductResponse;
+import com.java_microserver.productservice.dto.ProductResponseDTO;
 import com.java_microserver.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,7 +24,7 @@ public class ProductController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ProductResponse> getAllProducts() {
+    public List<ProductResponseDTO> getAllProducts() {
         return productService.getAllProducts();
     }
 }
