@@ -1,8 +1,8 @@
-package com.example.productservice.controller;
+package com.java_microserver.productservice.controller;
 
-import com.example.productservice.dto.ProductRequest;
-import com.example.productservice.dto.ProductResponse;
-import com.example.productservice.service.ProductService;
+import com.java_microserver.productservice.dto.ProductRequest;
+import com.java_microserver.productservice.dto.ProductResponse;
+import com.java_microserver.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
