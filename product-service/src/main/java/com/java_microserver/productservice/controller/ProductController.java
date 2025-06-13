@@ -1,6 +1,7 @@
 package com.java_microserver.productservice.controller;
 
 import com.java_microserver.productservice.dto.ProductRequest;
+import com.java_microserver.productservice.dto.ProductRequestDTO;
 import com.java_microserver.productservice.dto.ProductResponse;
 import com.java_microserver.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +19,8 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProduct(@RequestBody ProductRequest productRequest) {
-        productService.createProduct(productRequest);
+    public void createProduct(@RequestBody ProductRequestDTO productRequestDTO) {
+        productService.createProductDTO(productRequestDTO);
     }
 
     @GetMapping
