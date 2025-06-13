@@ -1,9 +1,9 @@
-package com.example.productservice.service;
+package com.java_microserver.productservice.service;
 
-import com.example.productservice.dto.ProductRequest;
-import com.example.productservice.dto.ProductResponse;
-import com.example.productservice.model.Product;
-import com.example.productservice.repository.ProductRepository;
+import com.java_microserver.productservice.dto.ProductRequest;
+import com.java_microserver.productservice.dto.ProductResponse;
+import com.java_microserver.productservice.model.Product;
+import com.java_microserver.productservice.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

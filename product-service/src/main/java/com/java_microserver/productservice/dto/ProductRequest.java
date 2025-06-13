@@ -1,4 +1,4 @@
-package com.example.productservice.dto;
+package com.java_microserver.productservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
