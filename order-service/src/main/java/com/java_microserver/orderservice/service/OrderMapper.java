@@ -3,6 +3,7 @@ package com.java_microserver.orderservice.service;
 
 import com.java_microserver.orderservice.dto.OrderLineItemsDTORecord;
 import com.java_microserver.orderservice.dto.OrderRequestDTO;
+import com.java_microserver.orderservice.dto.OrderResponseDTO;
 import com.java_microserver.orderservice.model.Order;
 import com.java_microserver.orderservice.model.OrderLineItems;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,10 @@ public class OrderMapper {
         orderLineItems.setSkuCode(orderLineItemsDTORecord.skuCode());
         orderLineItems.setPrice(orderLineItemsDTORecord.price());
         return orderLineItems;
+    }
+
+    public OrderResponseDTO orderIntoOrderResponseDTO(Order order) {
+        int orderQuantity = order.getOrderLineItemsList().size();
+        return new OrderResponseDTO(order.getId(), order.getOrderNumber(), orderQuantity);
     }
 }
