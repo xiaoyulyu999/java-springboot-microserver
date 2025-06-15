@@ -14,10 +14,11 @@ import java.util.UUID;
 @Service
 public class OrderMapper {
 
-    public void orderRequestDTOToOrder(OrderRequestDTO orderRequestDTO) {
+    public Order orderRequestDTOToOrder(OrderRequestDTO orderRequestDTO) {
         Order order = new Order();
         order.setOrderNumber(UUID.randomUUID().toString());
         order.setOrderLineItemsList(orderLineItemsDTORecordsToOrderLineItems(orderRequestDTO.orderLineItemsDTORecords()));
+        return order;
     }
 
     public List<OrderLineItems> orderLineItemsDTORecordsToOrderLineItems(List<OrderLineItemsDTORecord> orderLineItemsDTORecords) {

@@ -1,6 +1,5 @@
 package com.java_microserver.orderservice.controller;
 
-import com.java_microserver.orderservice.dto.OrderRequest;
 import com.java_microserver.orderservice.dto.OrderRequestDTO;
 import com.java_microserver.orderservice.dto.OrderResponseDTO;
 import com.java_microserver.orderservice.service.OrderService;
