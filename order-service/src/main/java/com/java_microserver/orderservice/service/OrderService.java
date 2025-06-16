@@ -1,5 +1,6 @@
 package com.java_microserver.orderservice.service;
 
+import com.java_microserver.orderservice.dto.InventoryResponseDTO;
 import com.java_microserver.orderservice.dto.OrderRequestDTO;
 import com.java_microserver.orderservice.dto.OrderResponseDTO;
 import com.java_microserver.orderservice.model.Order;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,14 +32,16 @@ public class OrderService {
         List<String> skuCodeList = order.getOrderLineItemsList()
                 .stream().map(OrderLineItems::getSkuCode).toList();
 
-        Boolean webBlock = webClient
+        InventoryResponseDTO[] webBlock = webClient
                 .get()
                 .uri("http://localhost:8082/api/inventory", uriBuilder -> uriBuilder.queryParam("skuCode", skuCodeList).build() )
                 .retrieve()
-                .bodyToMono(Boolean.class)
+                .bodyToMono(InventoryResponseDTO[].class)
                 .block();
-
-        if (Boolean.TRUE.equals(webBlock)) {
+        assert webBlock != null;
+        boolean allInStock = Arrays.stream(webBlock)
+                .allMatch(inventoryResponseDTO -> inventoryResponseDTO.quantity() > 0);
+        if (allInStock) {
             orderRepository.save(order);
             log.info("Placed order: {}", order);
         } else {
