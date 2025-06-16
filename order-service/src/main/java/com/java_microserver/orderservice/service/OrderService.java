@@ -38,9 +38,12 @@ public class OrderService {
                 .retrieve()
                 .bodyToMono(InventoryResponseDTO[].class)
                 .block();
+
         assert webBlock != null;
+
         boolean allInStock = Arrays.stream(webBlock)
-                .allMatch(inventoryResponseDTO -> inventoryResponseDTO.quantity() > 0);
+                .allMatch(inventoryResponseDTO-> inventoryResponseDTO.quantity() > 0);
+
         if (allInStock) {
             orderRepository.save(order);
             log.info("Placed order: {}", order);
