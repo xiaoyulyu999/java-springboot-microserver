@@ -18,8 +18,8 @@ public class InventoryController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<InventoryResponseDTO> isInStock(@RequestParam List<String> skuCodes) {
-        return inventoryService.isInStock(skuCodes);
+    public List<InventoryResponseDTO> findInventoryOfSkuCodesDTO(@RequestParam List<String> skuCodes) {
+        return inventoryService.findInventoryOfSkuCodesDTO(skuCodes);
 
     }
 }

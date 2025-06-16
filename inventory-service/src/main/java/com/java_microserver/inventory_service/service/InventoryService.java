@@ -19,7 +19,7 @@ public class InventoryService {
     private final InventoryMapper inventoryMapper;
 
     @Transactional(readOnly = true)
-    public List<InventoryResponseDTO> isInStock(List<String> skuCodes) {
+    public List<InventoryResponseDTO> findInventoryOfSkuCodesDTO(List<String> skuCodes) {
         return inventoryRepository.findBySkuCodeIn(skuCodes)
                 .stream()
                 .map(inventoryMapper::toDTO)

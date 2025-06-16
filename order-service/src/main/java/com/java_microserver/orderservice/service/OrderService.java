@@ -26,12 +26,13 @@ public class OrderService {
 
     public void placeOrder(OrderRequestDTO orderRequestDTO) {
         Order order = orderMapper.orderRequestDTOToOrder(orderRequestDTO);
+
         List<String> skuCodeList = order.getOrderLineItemsList()
                 .stream().map(OrderLineItems::getSkuCode).toList();
 
         Boolean webBlock = webClient
                 .get()
-                .uri("http://localhost:8082/api/inventory")
+                .uri("http://localhost:8082/api/inventory", uriBuilder -> uriBuilder.queryParam("skuCode", skuCodeList).build() )
                 .retrieve()
                 .bodyToMono(Boolean.class)
                 .block();
